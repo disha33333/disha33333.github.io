@@ -1,25 +1,178 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Disha's Garden</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dipshika</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
 <style>
-body{
-    max-width:700px;
-    margin:auto;
-    padding:40px;
-    font-family:Georgia,serif;
-    line-height:1.8;
-    background:#f8f5ef;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
+
+body{
+background:#fff3f5;
+color:black;
+font-family:Inter,sans-serif;
+overflow-x:hidden;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+opacity:.12;
+background:
+radial-gradient(circle at 20% 20%, #d4af37 0%, transparent 18%),
+radial-gradient(circle at 80% 30%, #d4af37 0%, transparent 15%),
+radial-gradient(circle at 60% 80%, #d4af37 0%, transparent 18%);
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:40px;
+}
+
+.hero h1{
+font-family:"Cormorant Garamond",serif;
+font-size:6rem;
+font-weight:600;
+letter-spacing:2px;
+}
+
+.hero p{
+margin-top:20px;
+max-width:600px;
+font-size:1.1rem;
+line-height:1.8;
+}
+
+.scroll{
+margin-top:60px;
+font-size:.9rem;
+letter-spacing:3px;
+}
+
+.posts{
+position:relative;
+height:1100px;
+padding:100px 0;
+}
+
+.post{
+position:absolute;
+text-decoration:none;
+color:black;
+font-family:"Cormorant Garamond",serif;
+font-size:1.7rem;
+transition:.4s;
+}
+
+.post:hover{
+transform:scale(1.15);
+color:#a47c00;
+}
+
+.p1{top:90px;left:15%;}
+.p2{top:220px;left:65%;}
+.p3{top:400px;left:30%;}
+.p4{top:520px;left:75%;}
+.p5{top:720px;left:20%;}
+.p6{top:820px;left:55%;}
+.p7{top:980px;left:40%;}
+
+.circle{
+position:absolute;
+border:1px solid rgba(212,175,55,.3);
+border-radius:50%;
+}
+
+.c1{
+width:300px;
+height:300px;
+top:50px;
+left:10%;
+}
+
+.c2{
+width:220px;
+height:220px;
+top:500px;
+right:15%;
+}
+
+.c3{
+width:280px;
+height:280px;
+bottom:100px;
+left:35%;
+}
+
+footer{
+padding:100px 20px;
+text-align:center;
+font-size:.9rem;
+opacity:.7;
+}
+
 </style>
 </head>
+
 <body>
 
-<h1>Hello.</h1>
+<section class="hero">
 
-<p>This is my little corner of the internet.</p>
+<h1>Dipshika</h1>
 
-<p>I collect ideas, books, notes and random thoughts here.</p>
+<p>
+A small collection of thoughts, books,
+questions, unfinished ideas and things
+worth remembering.
+</p>
+
+<div class="scroll">
+SCROLL
+</div>
+
+</section>
+
+<section class="posts">
+
+<div class="circle c1"></div>
+<div class="circle c2"></div>
+<div class="circle c3"></div>
+
+<a href="#" class="post p1">books</a>
+
+<a href="#" class="post p2">notes</a>
+
+<a href="#" class="post p3">photographs</a>
+
+<a href="#" class="post p4">essays</a>
+
+<a href="#" class="post p5">upsc</a>
+
+<a href="#" class="post p6">letters</a>
+
+<a href="#" class="post p7">archive</a>
+
+</section>
+
+<footer>
+made slowly
+</footer>
 
 </body>
 </html>
