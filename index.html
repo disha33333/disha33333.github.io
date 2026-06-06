@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dipshika</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<title>The Unfinished Notebook</title>
 
 <style>
 
@@ -16,11 +14,16 @@ padding:0;
 box-sizing:border-box;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
-background:#fff3f5;
-color:black;
-font-family:Inter,sans-serif;
+background:#fdeef2;
+color:#000;
+font-family:Georgia,serif;
 overflow-x:hidden;
+min-height:100vh;
 }
 
 body::before{
@@ -28,15 +31,16 @@ content:"";
 position:fixed;
 inset:0;
 pointer-events:none;
-opacity:.12;
+opacity:.15;
+
 background:
-radial-gradient(circle at 20% 20%, #d4af37 0%, transparent 18%),
-radial-gradient(circle at 80% 30%, #d4af37 0%, transparent 15%),
-radial-gradient(circle at 60% 80%, #d4af37 0%, transparent 18%);
+radial-gradient(circle at 15% 20%, #d4af37 0%, transparent 20%),
+radial-gradient(circle at 80% 25%, #d4af37 0%, transparent 15%),
+radial-gradient(circle at 60% 75%, #d4af37 0%, transparent 20%);
 }
 
 .hero{
-min-height:100vh;
+height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -46,77 +50,85 @@ padding:40px;
 }
 
 .hero h1{
-font-family:"Cormorant Garamond",serif;
 font-size:6rem;
-font-weight:600;
-letter-spacing:2px;
+font-weight:normal;
+letter-spacing:3px;
+margin-bottom:20px;
 }
 
 .hero p{
-margin-top:20px;
-max-width:600px;
-font-size:1.1rem;
+max-width:650px;
 line-height:1.8;
+font-size:1.1rem;
 }
 
-.scroll{
-margin-top:60px;
-font-size:.9rem;
-letter-spacing:3px;
+.hero a{
+margin-top:50px;
+text-decoration:none;
+color:black;
+border:1px solid black;
+padding:12px 28px;
+transition:.3s;
 }
 
-.posts{
+.hero a:hover{
+background:black;
+color:white;
+}
+
+.cloud{
 position:relative;
-height:1100px;
-padding:100px 0;
+height:1200px;
+max-width:1400px;
+margin:auto;
 }
 
 .post{
 position:absolute;
 text-decoration:none;
 color:black;
-font-family:"Cormorant Garamond",serif;
-font-size:1.7rem;
-transition:.4s;
+font-size:1.8rem;
+padding:10px;
+transition:.3s;
 }
 
 .post:hover{
 transform:scale(1.15);
-color:#a47c00;
+color:#b48a00;
 }
 
-.p1{top:90px;left:15%;}
-.p2{top:220px;left:65%;}
-.p3{top:400px;left:30%;}
-.p4{top:520px;left:75%;}
-.p5{top:720px;left:20%;}
-.p6{top:820px;left:55%;}
-.p7{top:980px;left:40%;}
+.post:nth-child(1){top:120px;left:10%;}
+.post:nth-child(2){top:250px;left:60%;}
+.post:nth-child(3){top:420px;left:28%;}
+.post:nth-child(4){top:520px;left:78%;}
+.post:nth-child(5){top:700px;left:15%;}
+.post:nth-child(6){top:850px;left:55%;}
+.post:nth-child(7){top:1000px;left:35%;}
 
-.circle{
+.goldcircle{
 position:absolute;
-border:1px solid rgba(212,175,55,.3);
+border:1px solid rgba(212,175,55,.5);
 border-radius:50%;
 }
 
-.c1{
+.g1{
 width:300px;
 height:300px;
-top:50px;
-left:10%;
+top:70px;
+left:5%;
 }
 
-.c2{
+.g2{
 width:220px;
 height:220px;
 top:500px;
-right:15%;
+right:10%;
 }
 
-.c3{
+.g3{
 width:280px;
 height:280px;
-bottom:100px;
+bottom:80px;
 left:35%;
 }
 
@@ -124,7 +136,6 @@ footer{
 padding:100px 20px;
 text-align:center;
 font-size:.9rem;
-opacity:.7;
 }
 
 </style>
@@ -137,36 +148,27 @@ opacity:.7;
 <h1>Dipshika</h1>
 
 <p>
-A small collection of thoughts, books,
-questions, unfinished ideas and things
-worth remembering.
+A quiet corner for books, notes, thoughts,
+questions, photographs and unfinished ideas.
 </p>
 
-<div class="scroll">
-SCROLL
-</div>
+<a href="#garden">enter</a>
 
 </section>
 
-<section class="posts">
+<section id="garden" class="cloud">
 
-<div class="circle c1"></div>
-<div class="circle c2"></div>
-<div class="circle c3"></div>
+<div class="goldcircle g1"></div>
+<div class="goldcircle g2"></div>
+<div class="goldcircle g3"></div>
 
-<a href="#" class="post p1">books</a>
-
-<a href="#" class="post p2">notes</a>
-
-<a href="#" class="post p3">photographs</a>
-
-<a href="#" class="post p4">essays</a>
-
-<a href="#" class="post p5">upsc</a>
-
-<a href="#" class="post p6">letters</a>
-
-<a href="#" class="post p7">archive</a>
+<a href="#" class="post">books</a>
+<a href="#" class="post">upsc</a>
+<a href="#" class="post">photographs</a>
+<a href="#" class="post">notes</a>
+<a href="#" class="post">essays</a>
+<a href="#" class="post">archive</a>
+<a href="#" class="post">ideas</a>
 
 </section>
 
