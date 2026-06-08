@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            pink: '#FDF5F7',      // Very light classy pink
+                            dark: '#4A3B42',      // Warm dark tone for text
+                            gold: '#D4AF37',      // Classic gold
+                            goldLight: '#F0E2AC', // Soft gold for glow
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-color: #FDF5F7;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(to right, #D4AF37, #AA8825);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="text-brand-dark font-sans antialiased selection:bg-brand-goldLight selection:text-brand-dark relative overflow-x-hidden">
+
+    <!-- Glitter Canvas (Fixed behind everything) -->
+    <canvas id="glitterCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1]"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-500 py-4" id="navbar">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center glass-panel rounded-full px-6 py-3 shadow-[0_4px_30px_rgba(0,0,0,0.03)]">
+                <a href="#" class="text-2xl font-serif font-semibold tracking-wide text-brand-dark">A.</a>
+                <div class="hidden md:flex space-x-10">
+                    <a href="#about" class="text-sm tracking-widest uppercase text-brand-dark/70 hover:text-brand-gold transition-colors">About</a>
+                    <a href="#projects" class="text-sm tracking-widest uppercase text-brand-dark/70 hover:text-brand-gold transition-colors">Work</a>
+                    <a href="#contact" class="text-sm tracking-widest uppercase text-brand-dark/70 hover:text-brand-gold transition-colors">Contact</a>
+                </div>
+                <!-- Mobile menu button -->
+                <button class="md:hidden p-1 text-brand-dark/70 hover:text-brand-gold focus:outline-none" onclick="toggleMobileMenu()">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile menu panel -->
+        <div class="md:hidden hidden absolute top-full left-0 w-full px-6 mt-2" id="mobile-menu">
+            <div class="glass-panel rounded-2xl p-4 flex flex-col space-y-4 text-center shadow-lg">
+                <a href="#about" class="text-sm tracking-widest uppercase text-brand-dark/80 hover:text-brand-gold">About</a>
+                <a href="#projects" class="text-sm tracking-widest uppercase text-brand-dark/80 hover:text-brand-gold">Work</a>
+                <a href="#contact" class="text-sm tracking-widest uppercase text-brand-dark/80 hover:text-brand-gold">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-20 px-6 relative">
+        <div class="max-w-4xl mx-auto text-center z-10 flex flex-col items-center">
+            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full p-1 border border-brand-gold/30 mb-8 relative">
+                <div class="absolute inset-0 rounded-full border border-brand-gold animate-[spin_10s_linear_infinite] opacity-50 border-t-transparent border-l-transparent"></div>
+                <img src="https://placehold.co/400x400/FDF5F7/D4AF37?font=playfair-display&text=A" alt="Profile" class="w-full h-full object-cover rounded-full">
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-serif font-semibold leading-tight mb-6">
+                Creating <span class="italic text-brand-gold">elegant</span> digital <br class="hidden md:block">
+                experiences.
+            </h1>
+            <p class="text-lg md:text-xl font-light text-brand-dark/70 max-w-2xl mx-auto mb-10 leading-relaxed">
+                A minimalist approach to web design, balancing beautiful aesthetics with intuitive functionality.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="#projects" class="px-8 py-3 rounded-full bg-brand-dark text-brand-pink text-sm tracking-widest uppercase hover:bg-black transition-colors duration-300">Explore Work</a>
+                <a href="#contact" class="px-8 py-3 rounded-full border border-brand-gold text-brand-dark text-sm tracking-widest uppercase hover:bg-brand-gold/10 transition-colors duration-300">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 relative z-10">
+        <div class="max-w-6xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-brand-gold text-sm tracking-widest uppercase mb-2">Selected Works</p>
+                <h2 class="text-4xl font-serif font-semibold">Featured Projects</h2>
+                <div class="w-12 h-[1px] bg-brand-gold mx-auto mt-6"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Project 1 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-[4/3] w-full rounded-2xl overflow-hidden glass-panel relative mb-6">
+                        <img src="https://placehold.co/800x600/F8E8EE/4A3B42?font=playfair-display&text=Luxe+Brand" alt="Project 1" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-in-out">
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-serif font-medium mb-2 group-hover:text-brand-gold transition-colors">Maison Ethereal</h3>
+                        <p class="text-brand-dark/60 font-light mb-4">E-commerce platform for a luxury fragrance brand.</p>
+                        <p class="text-xs tracking-widest uppercase text-brand-gold">UI/UX • Development</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="group cursor-pointer md:mt-12">
+                    <div class="aspect-[4/3] w-full rounded-2xl overflow-hidden glass-panel relative mb-6">
+                        <img src="https://placehold.co/800x600/F8E8EE/4A3B42?font=playfair-display&text=Editorial" alt="Project 2" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-in-out">
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-serif font-medium mb-2 group-hover:text-brand-gold transition-colors">The Velvet Issue</h3>
+                        <p class="text-brand-dark/60 font-light mb-4">Digital editorial magazine with fluid typography.</p>
+                        <p class="text-xs tracking-widest uppercase text-brand-gold">Design • Art Direction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 relative z-10">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-serif font-semibold mb-8">Let's create something <span class="italic text-brand-gold">beautiful</span>.</h2>
+            <p class="text-lg font-light text-brand-dark/70 mb-12">
+                Available for freelance opportunities and collaborations.
+            </p>
+            <a href="mailto:hello@example.com" class="inline-block border-b border-brand-gold pb-1 text-xl font-serif hover:text-brand-gold transition-colors">
+                hello@example.com
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 relative z-10 border-t border-brand-dark/5">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-brand-dark/50 text-sm font-light">© 2026 Alex. All rights reserved.</p>
+            <div class="flex space-x-6">
+                <a href="#" class="text-brand-dark/50 hover:text-brand-gold transition-colors text-sm tracking-widest uppercase">Instagram</a>
+                <a href="#" class="text-brand-dark/50 hover:text-brand-gold transition-colors text-sm tracking-widest uppercase">LinkedIn</a>
+                <a href="#" class="text-brand-dark/50 hover:text-brand-gold transition-colors text-sm tracking-widest uppercase">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth reveal on load
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+            initGlitter(); // Start canvas animation
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // ----------------------------------------------------
+        // 3D Gold Glitter Canvas Logic
+        // ----------------------------------------------------
+        function initGlitter() {
+            const canvas = document.getElementById('glitterCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            let width, height;
+            const particles = [];
+            const particleCount = 60; // Keep it minimalist, not too cluttered
+
+            function resize() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            }
+            
+            window.addEventListener('resize', resize);
+            resize();
+
+            // Initialize particles with 3D properties
+            for(let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    z: Math.random() * 100, // Z-depth for 3D effect
+                    baseSize: Math.random() * 2 + 1,
+                    opacity: Math.random(),
+                    twinkleDir: Math.random() > 0.5 ? 1 : -1,
+                    twinkleSpeed: Math.random() * 0.015 + 0.005,
+                    speedY: Math.random() * 0.3 + 0.1,
+                    rot: Math.random() * Math.PI * 2,
+                    rotSpeed: (Math.random() - 0.5) * 0.05
+                });
+            }
+
+            function drawParticles() {
+                ctx.clearRect(0, 0, width, height);
+                
+                particles.forEach(p => {
+                    // Update opacity (Twinkling)
+                    p.opacity += p.twinkleSpeed * p.twinkleDir;
+                    if(p.opacity >= 0.8) p.twinkleDir = -1;
+                    if(p.opacity <= 0.1) p.twinkleDir = 1;
+                    
+                    // 3D Perspective Calculations
+                    // Particles closer (higher z) move faster and appear larger
+                    let scale = (p.z / 50) + 0.3; 
+                    
+                    // Upward floating movement
+                    p.y -= p.speedY * scale;
+                    p.rot += p.rotSpeed;
+
+                    // Wrap around screen
+                    if(p.y < -20) {
+                        p.y = height + 20;
+                        p.x = Math.random() * width;
+                    }
+
+                    // Draw the elegant glitter flake (a tiny diamond/star shape)
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.rot);
+                    ctx.scale(scale, scale);
+                    ctx.globalAlpha = p.opacity;
+                    
+                    // Gold styling
+                    ctx.fillStyle = '#D4AF37'; 
+                    ctx.shadowBlur = 8;
+                    ctx.shadowColor = 'rgba(212, 175, 55, 0.4)'; // Soft gold glow
+                    
+                    ctx.beginPath();
+                    ctx.moveTo(0, -p.baseSize); // Top
+                    ctx.lineTo(p.baseSize/2, 0); // Right
+                    ctx.lineTo(0, p.baseSize); // Bottom
+                    ctx.lineTo(-p.baseSize/2, 0); // Left
+                    ctx.closePath();
+                    ctx.fill();
+                    
+                    ctx.restore();
+                });
+                
+                requestAnimationFrame(drawParticles);
+            }
+            
+            drawParticles();
+        }
+    </script>
+</body>
+</html>
